@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .registration-container {
+      background-color: #ffffff; /* Белый цвет формы */
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+      margin: 0 auto;
+      animation: slideIn 1s forwards; /* Добавленная анимация */
+      animation-delay: 0.5s; /* Задержка анимации */
+    }
+
+    .registration-container h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #FF4900; /* Оранжевый цвет заголовка */
+    }
+
+    .registration-container label {
+      display: block;
+      margin-bottom: 10px;
+      color: #FF4900; /* Оранжевый цвет текста лейблов */
+    }
+
+    .registration-container input[type="text"],
+    .registration-container input[type="password"] {
+      width: 95%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .registration-container input[type="submit"] {
+      background-color: #fd7540; /* Синий цвет кнопки */
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .registration-container input[type="submit"]:hover {
+      background-color: #fd7540; /* Темно-синий цвет при наведении */
+    }
+
+    .error-message {
+      color: #ff0000;
+    }
+
+    .registration-link {
+      color: #007bff;
+      text-decoration: none;
+      display: block;
+      margin-top: 20px;
+    }
+
+    .registration-link:hover {
+      color: #0056b3;
+    }
+
+    #login-container {
+      background-color: #ffffff; /* Белый цвет формы */
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* Увеличил силу тени */
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+      animation: flicker 1s infinite; /* Уменьшил интервал анимации */
+      animation-fill-mode: both;
+    }
+
+    @keyframes flicker {
+      0% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.6); /* Увеличил силу тени */
+      }
+      100% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    /* Анимация загрузки */
+    @keyframes slideIn {
+      from {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="login-container" class="registration-container">
+  <h1>Регистрация</h1>
+  <div th:if="${message}" class="error-message">
+    Пользователь уже существует
+  </div>
+  <form th:action="@{/registration}" method="post">
+    <div><label>Логин: <input type="text" name="username"/> </label></div>
+    <div><label>Пароль: <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="Регистрация"/></div>
+    <a href="/login" class="registration-link">Уже есть аккаунт? Авторизоваться.</a>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Фильма</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        /* Новые стили */
+        body {
+            background-color: #000;
+            color: #fff;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #111; /* Черный с оттенком */
+            color: #fff;
+        }
+
+        table, th, td {
+            border: 1px solid #333; /* Черный с оттенком */
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .edit-button, .delete-button, .add-button, .back-button {
+            text-decoration: none;
+            padding: 5px 10px;
+            margin: 2px;
+            border-radius: 5px;
+        }
+
+        .edit-button {
+            border: 1px solid #ff5722; /* Оранжевый */
+            background-color: #ff5722; /* Оранжевый */
+        }
+
+        .edit-button:hover {
+            background-color: #f4511e; /* Оранжевый с темным оттенком при наведении */
+        }
+
+        .delete-button {
+            border: 1px solid #f44336; /* Красный */
+            background-color: #f44336; /* Красный */
+        }
+
+        .delete-button:hover {
+            background-color: #d32f2f; /* Красный с темным оттенком при наведении */
+        }
+
+        .add-button, .back-button {
+            padding: 10px 20px;
+        }
+
+        .add-button {
+            background-color: #ff5722; /* Оранжевый */
+        }
+
+        .add-button:hover {
+            background-color: #f4511e; /* Оранжевый с темным оттенком при наведении */
+        }
+
+        .back-button {
+            background-color: #800000; /* Темно-красный */
+        }
+
+        .back-button:hover {
+            background-color: #640000; /* Темно-красный с темным оттенком при наведении */
+        }
+
+        /* Добавим яркие оранжевые вставки */
+        .accent-orange-bg {
+            background-color: #ff6f00; /* Яркий оранжевый */
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        /* Стиль заголовков и текста */
+        h2, p {
+            color: #ff5722; /* Оранжевый */
+        }
+
+        /* Остальные стили остаются без изменений */
+
+    </style>
+
+</head>
+<body>
+<div th:switch="${films}" >
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+
+            <div th:case="*" class="table-container">
+                <h2 class="my-5 text-center">Фильмы</h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Цена</th>
+                        <th>Год выпуска</th>
+                        <th>Время фильма</th>
+                        <th>Количество актеров в фильме</th>
+                        <th>Рейтинг</th>
+                        <th>Жанр</th>
+                        <th>Производитель</th>
+                        <th>Режиссер</th>
+                        <th>Изменение</th>
+                        <th>Удаление</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="film : ${films}">
+                        <td th:text="${film.name_film}"></td>
+                        <td th:text="${film.price_film}"></td>
+                        <td th:text="${film.year_film}"></td>
+                        <td th:text="${film.time_film}"></td>
+                        <td th:text="${film.numbers_actors_film}"></td>
+                        <td th:text="${film.rating_film}"></td>
+                        <td th:text="${film.genre != null ? film.genre.name_genre : ''}"></td>
+                        <td th:text="${film.manufacturer != null ? film.manufacturer.name_manufacturer : ''}"></td>
+                        <td th:text="${film.author != null ? film.author.name_author : ''}"></td>
+                        <td>
+                            <a th:href="@{/films/editFilm/{id}(id=${film.id_film})}" class="edit-button">Изменить</a>
+                        </td>
+                        <td>
+                            <a th:href="@{/films/deleteFilm/{id}(id=${film.id_film})}" class="delete-button">Удалить</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="my-5 text-center">
+                <a href="/films/addFilm" class="add-button">Добавить фильм</a>
+            </p>
+            <p class="my-5 text-center">
+                <a href="/" class="back-button">Назад</a>
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

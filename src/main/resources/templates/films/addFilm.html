@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Добавление фильма</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #ff5722;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #222;
+            border: 1px solid #333;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #ff5722;
+        }
+
+        input[type="text"] {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .error-message {
+            color: #d9534f;
+            font-size: 14px;
+        }
+
+        .submit-button {
+            background-color: #ff5722;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #f4511e;
+        }
+
+        .custom-select {
+            width: 101%;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .custom-select option {
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h2>Создание фильма</h2>
+    <div class="container">
+        <form action="/films/addFilm" th:object="${film}" method="post">
+            <div class="form-group">
+                <label for="name_film">Название</label>
+                <input type="text" th:field="*{name_film}" id="name_film" placeholder="Название">
+                <span class="error-message" th:if="${#fields.hasErrors('name_film')}" th:errors="*{name_film}"></span>
+            </div>
+            <div class="form-group">
+                <label for="price_film">Цена</label>
+                <input type="text" th:field="*{price_film}" id="price_film" placeholder="Цена">
+                <span class="error-message" th:if="${#fields.hasErrors('price_film')}" th:errors="*{price_film}"></span>
+            </div>
+            <div class="form-group">
+                <label for="year_film">Год выпуска</label>
+                <input type="text" th:field="*{year_film}" id="year_film" placeholder="Год выпуска">
+                <span class="error-message" th:if="${#fields.hasErrors('year_film')}" th:errors="*{year_film}"></span>
+            </div>
+            <div class="form-group">
+                <label for="time_film">Время фильма</label>
+                <input type="text" th:field="*{time_film}" id="time_film" placeholder="Время фильма">
+                <span class="error-message" th:if="${#fields.hasErrors('time_film')}" th:errors="*{time_film}"></span>
+            </div>
+            <div class="form-group">
+                <label for="numbers_actors_film">Количество актеров в фильме</label>
+                <input type="text" th:field="*{numbers_actors_film}" id="numbers_actors_film" placeholder="Количество актеров в фильме">
+                <span class="error-message" th:if="${#fields.hasErrors('numbers_actors_film')}" th:errors="*{numbers_actors_film}"></span>
+            </div>
+            <div class="form-group">
+                <label for="rating_film">Рейтинг фильма</label>
+                <input type="text" th:field="*{rating_film}" id="rating_film" placeholder="Рейтинг фильма">
+                <span class="error-message" th:if="${#fields.hasErrors('rating_film')}" th:errors="*{rating_film}"></span>
+            </div>
+            <label for="genre">Жанр</label>
+            <div class="form-group">
+                <select th:field="*{genre}" id="genre" class="custom-select">
+                    <option value="">Выберите жанр</option>
+                    <option th:each="genreItem : ${genres}" th:value="${genreItem.id_genre}" th:text="${genreItem.name_genre}"></option>
+                </select>
+                <span class="error-message" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></span>
+            </div>
+            <label for="manufacturer">Производитель</label>
+            <div class="form-group">
+                <select th:field="*{manufacturer}" id="manufacturer" class="custom-select">
+                    <option value="">Выберите производителя</option>
+                    <option th:each="manufacturerItem : ${manufacturers}" th:value="${manufacturerItem.id_manufacturer}" th:text="${manufacturerItem.name_manufacturer}"></option>
+                </select>
+                <span class="error-message" th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}"></span>
+            </div>
+            <label for="genre">Режиссер</label>
+            <div class="form-group">
+                <select th:field="*{author}" id="author" class="custom-select">
+                    <option value="">Выберите режиссера</option>
+                    <option th:each="authorItem : ${authors}" th:value="${authorItem.id_author}" th:text="${authorItem.name_author}"></option>
+                </select>
+                <span class="error-message" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span>
+            </div>
+            <div>
+                <input type="submit" class="submit-button" value="Создать фильм">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

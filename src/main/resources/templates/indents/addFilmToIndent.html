@@ -1,0 +1,85 @@
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title>Добавить фильм к заказу</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #000;
+                color: #fff;
+                margin: 0;
+                padding: 0;
+            }
+            h1 {
+                text-align: center;
+                margin-top: 20px;
+                color: #ff5722;
+            }
+            form {
+                background-color: #222;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                width: 300px;
+                margin: 0 auto;
+            }
+            h2 {
+                text-align: center;
+                color: #ff5722;
+            }
+            select {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                background-color: #333;
+                color: #fff;
+                border: 1px solid #333;
+                border-radius: 5px;
+            }
+            button {
+                background-color: #ff5722;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #f4511e;
+            }
+            a {
+                display: block;
+                text-align: center;
+                margin-top: 20px;
+                color: #ff5722;
+            }
+        </style>
+    </head>
+    <body>
+    <h1>Добавить фильм к заказу</h1>
+    <form th:action="${'/indents/addFilmToIndent'}" method="post">
+        <label>
+            <select name="film">
+                <option value="">Выберите фильм</option>
+                <th:block th:each="element : ${film}">
+                    <option th:text="${element.name_film}" th:value="${element.name_film}"></option>
+                </th:block>
+            </select>
+        </label>
+        <label>
+            <select name="indent">
+                <option value="">Выберите заказ</option>
+                <th:block th:each="element : ${indent}">
+                    <option th:text="${element.id_indent}" th:value="${element.id_indent}"></option>
+                </th:block>
+            </select>
+        </label>
+        <br>
+        <div style="text-align: center;">
+            <button type="submit">Добавить фильм к заказу</button>
+        </div>
+    </form>
+    <a href="/indents">Вернуться к заказам</a>
+    </body>
+    </html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUTH</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /*Header*/
+
+        .kinopoisk-header {
+            background-color: #000;
+            padding: 30px;
+            border-bottom: 2px solid #FF6F00;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            max-height: 50px;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu li {
+            margin: 0 15px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 19px;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #FF6F00;
+        }
+
+        /*Fotter*/
+
+        .kinopoisk-footer {
+            background-color: #FF6F00;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo img {
+            max-height: 50px;
+        }
+
+        .footer-links ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .footer-links li {
+            margin: 0 15px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 19px;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        /*Main*/
+
+        .main-content {
+            background-color: #000000;
+            padding: 30px;
+            color: #fff;
+        }
+
+        .featured-movies,
+        .latest-news {
+            background-color: #FF7F00;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .featured-movies h2,
+        .latest-news h2 {
+            color: #fff;
+        }
+
+        .featured-movies ul,
+        .latest-news p {
+            color: #fff;
+        }
+        /* Закругление блоков */
+        .kinopoisk-header, .kinopoisk-footer, .featured-movies, .latest-news {
+            border-radius: 10px; /* Добавляем закругление углов */
+            overflow: hidden; /* Убираем возможность выхода контента за пределы блока с закруглением */
+        }
+
+        /* Выделение кнопок */
+        .menu a[href="/login"], .menu a[href="/registration"] {
+            background-color: #FF6F00;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .menu a[href="/login"]:hover, .menu a[href="/registration"]:hover {
+            background-color: #FF4500;
+        }
+
+        /* Дополнительные стили для описания фильмов */
+        .featured-movies ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .featured-movies li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .featured-movies li img {
+            margin-right: 20px;
+            max-width: 150px; /* Установите желаемую ширину для изображения */
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .featured-movies li p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        /*Trailers*/
+
+        .new-trailers {
+            background-color: #FF7F00;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .new-trailers h2 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .trailer-item {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .trailer-item img {
+            max-width: 450px; /* Увеличиваем ширину изображения */
+            border-radius: 10px;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+
+        .trailer-item a {
+            color: #fff;
+            text-decoration: none;
+            background-color: #FF6F00;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .trailer-item a:hover {
+            background-color: #FF4500;
+        }
+        .n{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <header class="kinopoisk-header">
+        <div class="logo">
+            <img src="/images/kino.png" alt="Kinopoisk Logo">
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="/authors">Режиссеры</a></li>
+                <li><a href="/countries">Страны</a></li>
+                <li><a href="/films">Фильмы</a></li>
+                <li><a href="/genres">Жанры</a></li>
+                <li><a href="/indents">Заказы</a></li>
+                <li><a href="/manufacturers">Производители</a></li>
+                <li><a href="/status">Статус</a></li>
+                <li><a href="/login">Выйти из аккаунта</a></li>
+                <li><a href="/registration">Зарегистрироваться</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <h1>Добро пожаловать на КиноТеатр!</h1>
+        <p>Здесь вы найдете лучшие фильмы и сериалы.</p>
+        <section class="featured-movies">
+            <h2>Рекомендуемые фильмы</h2>
+            <ul>
+                <li>
+                    <img src="/images/zelmil.jpg" alt=" ">
+                    <p>Зеленая миля - Пол Эджкомб — начальник блока смертников в тюрьме «Холодная гора», каждый из узников которого однажды проходит «зеленую милю» по пути к месту казни. Пол повидал много заключённых и надзирателей за время работы.
+                        Однако гигант Джон Коффи, обвинённый в страшном преступлении, стал одним из самых необычных обитателей блока.</p></li>
+                <li>
+                    <img src="/images/shoushenk.jpg" alt=" ">
+                    <p>Побег из Шоушенка  - Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни.
+                        Но Энди, обладающий живым умом и доброй душой, находит подход как к заключённым, так и к охранникам, добиваясь их особого к себе расположения.</p>
+                    </li>
+                <li>
+                    <img src="/images/forestgamp.jpg" alt=" ">
+                    <p>Форрест Гамп - Сидя на автобусной остановке, Форрест Гамп — не очень умный, но добрый и открытый парень — рассказывает случайным встречным историю своей необыкновенной жизни.
+                        С самого малолетства парень страдал от заболевания ног, соседские мальчишки дразнили его, но в один прекрасный день Форрест открыл в себе невероятные способности к бегу.
+                        Подруга детства Дженни всегда его поддерживала и защищала, но вскоре дороги их разошлись.</p>
+                    </li>
+            </ul>
+        </section>
+
+        <section class="latest-news">
+            <h2>Последние новости</h2>
+            <p>Одна из главных новостей — запуск сериала по известному циклу фантастических романов Сергея Лукьяненко «Дозоры».
+                Подробностей пока нет. Напомним, что в рамках этой франшизы ранее вышли
+                два полнометражных фильма во главе с Константином Хабенским — «Ночной Дозор» (2004) и «Дневной Дозор» (2006).</p>
+            <p>Еще один многосерийный проект «Студии Плюс» и «Кинопоиска» на основе книг в жанре фэнтези — сериал «Этерна».
+                В прошлом году вышел полнометражный фильм «Этерна: Часть первая», однако создатели экранизации решили полностью перезапустить эту киновселенную в формате сериала, у которого будет новый актерский состав и творческая команда.
+                К шоу уже прикреплен режиссер Сергей Трофимов («Нулевой пациент»). Премьера намечена на 2024 год.</p>
+            <p>Третий крупный фэнтезийный проект «Кинопоиска» — сериал «Иные», события которого будут иметь место в альтернативной Европе 1930-х годов.
+                Главная героиня — владеющая суперспособностями женщина по имени Аня,
+                которая противостоит спецслужбам и таинственному злодею в лице Нойманна. Премьера состоится в 2024 году.</p>
+        </section>
+
+        <section class="new-trailers">
+            <h2>Новые трейлеры</h2>
+            <div class="n">
+            <div class="trailer-item">
+                <img src="/images/letcor.jpg" alt="Летучий корабль"> <br><br>
+                <a href="https://youtu.be/WHX-YBljTcE" target="_blank">Смотреть трейлер</a>
+            </div>
+            <div class="trailer-item">
+                <img src="/images/papdoch.jpg" alt="Папины дочки Новые"><br><br>
+                <a href="https://youtu.be/4UECwKJdKF4" target="_blank">Смотреть трейлер</a>
+            </div>
+            <div class="trailer-item">
+                <img src="/images/chuzay.jpg" alt="Чужая"><br><br>
+                <a href="https://youtu.be/v-2V4pQlN8U" target="_blank">Смотреть трейлер</a>
+            </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="kinopoisk-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="/images/kino.png" alt="Kinopoisk Logo">
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="/edit-access">Редактирование доступа</a></li>
+                    <li><a href="https://www.aviasales.ru/">Реклама</a></li>
+                    <li><a href="http://duma.gov.ru/contacts/citizen/">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 KinoTeatr. Все права защищены.
+        </div>
+    </footer>
+</body>
+</html>
